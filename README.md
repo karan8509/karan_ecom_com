@@ -1,35 +1,20 @@
-# 🛒 Karan E-Commerce Frontend
+🛒 Karan E-Commerce Frontend
+A simple and responsive e-commerce frontend built with React.js, using product data from the DummyJSON Products API.
+This project demonstrates routing, global state management using Zustand and Redux, and a component-based UI architecture styled with Tailwind CSS.
 
-A simple React-based e-commerce frontend built using data from [DummyJSON Products API](https://dummyjson.com/products).  
-This app demonstrates routing, global state management using **Zustand**, and component-based architecture.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2a3a4770-1262-4633-a09a-753537c19145" />
 
----
 
-## 🚀 Tech Stack
+🚀 Tech Stack
+React.js – Core frontend library
+React Router DOM – Client-side routing
+Zustand – Lightweight and simple global state management
+Redux – Predictable and scalable state container
+Tailwind CSS – Utility-first CSS framework for styling
+DummyJSON API – Free mock product API for testing and development
 
-- **React.js** – Frontend Library
-- **React Router DOM** – For routing between pages
-- **Zustand** – Lightweight global state management
-- **Tailwind CSS** – For responsive and clean UI styling
-- **DummyJSON API** – For mock product data
+🧠 State Management
+This project uses both Zustand and Redux for practice and comparison:
 
----
-
-## 🗂️ Project Structure
-
-```bash
-├── components/
-│   ├── Navbar.jsx
-│   ├── Product.jsx
-│   ├── AddToCart.jsx
-│   └── AddToLike.jsx
-│
-├── pages/
-│   ├── Home.jsx
-│   └── NotFound.jsx
-│
-├── store/
-│   └── userProduct.js  # Zustand store for global state
-│
-├── App.jsx
-└── README.md
+✅ Zustand is used for managing simple states like cart and liked items.
+✅ Redux is used to demonstrate a more scalable and structured approach for product data.
