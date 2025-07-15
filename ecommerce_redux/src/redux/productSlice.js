@@ -22,11 +22,13 @@
 
 // export const { addToCart, removeCartProduct } = userProductStore.actions;
 // export default userProductStore.reducer;
+
+
 import { createSlice } from "@reduxjs/toolkit";
 
 // ✅ Define initialState properly
 const initialState = {
-  AllProduct: [],
+  AllProduct:    JSON.parse(localStorage.getItem("product"  ,)) ||  [],
 };
 
 const userProductStore = createSlice({
@@ -35,11 +37,16 @@ const userProductStore = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.AllProduct.push(action.payload);  // Example logic
+        localStorage.setItem("product"  , JSON.stringify(state.AllProduct))
+
+      
     },
     removeCartProduct: (state, action) => {
       state.AllProduct = state.AllProduct.filter(
         (product) => product.id !== action.payload.id
+        
       );
+       localStorage.setItem("product"  , JSON.stringify(state.AllProduct))
     },
   },
 });

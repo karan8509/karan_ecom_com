@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/productSlice";
+import { addToCart  } from "../redux/productSlice";
 
 const Product = () => {
   const [data, setData] = useState([]);
@@ -55,7 +55,8 @@ const Product = () => {
               Add to Cart
             </button>
 
-            <button className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-200 ease-in-out">
+            <button className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-200 ease-in-out"
+      >
               Like to Cart
             </button>
           </div>

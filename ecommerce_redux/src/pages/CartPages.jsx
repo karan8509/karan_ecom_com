@@ -1,9 +1,14 @@
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {removeCartProduct}from '../redux/productSlice'
 const Cart = () => {
   const cart = useSelector((state) => state.product.AllProduct); 
+  const dispatch = useDispatch()
+
+
+  const handleRemoveCart  = (id_product) => {
+    dispatch(removeCartProduct(id_product))
+  }
   
-  console.log("cart ----->", cart);
 
   return (
     <div className="p-6">
@@ -17,6 +22,7 @@ const Cart = () => {
                 <img src={item.images} alt="" />
               <h2 className="font-semibold">{item.title}</h2>
               <p className="text-gray-600">${item.price}</p>
+              <button  onClick={() => handleRemoveCart(item)}>remove</button>
             </li>
           ))}
         </ul>
