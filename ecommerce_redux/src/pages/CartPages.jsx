@@ -1,14 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import {removeCartProduct}from '../redux/productSlice'
+import { useDispatch, useSelector } from "react-redux";
+import { removeCartProduct } from "../redux/productSlice";
 const Cart = () => {
-  const cart = useSelector((state) => state.product.AllProduct); 
-  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.product.AllProduct);
+  const dispatch = useDispatch();
 
-
-  const handleRemoveCart  = (id_product) => {
-    dispatch(removeCartProduct(id_product))
-  }
-  
+  const handleRemoveCart = (id_product) => {
+    dispatch(removeCartProduct(id_product));
+  };
 
   return (
     <div className="p-6">
@@ -19,10 +17,10 @@ const Cart = () => {
         <ul className="space-y-4">
           {cart.map((item) => (
             <li key={item.id} className="border p-4 rounded-md shadow">
-                <img src={item.images} alt="" />
+              <img src={item.images} alt="" />
               <h2 className="font-semibold">{item.title}</h2>
               <p className="text-gray-600">${item.price}</p>
-              <button  onClick={() => handleRemoveCart(item)}>remove</button>
+              <button onClick={() => handleRemoveCart(item)}>remove</button>
             </li>
           ))}
         </ul>

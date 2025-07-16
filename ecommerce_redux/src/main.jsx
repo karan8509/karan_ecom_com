@@ -6,10 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./component/navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
     <BrowserRouter>
     <Navbar />
       <App />
     </BrowserRouter>
-  </StrictMode>
 );

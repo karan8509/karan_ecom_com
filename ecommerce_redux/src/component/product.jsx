@@ -1,29 +1,22 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart  } from "../redux/productSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, fetchProductData } from "../redux/productSlice";
 
 const Product = () => {
-  const [data, setData] = useState([]);
-
   const dispatch = useDispatch();
 
+  const { data, isLoading, error } = useSelector((state) => state.product);
+
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get(
-          "https://api.escuelajs.co/api/v1/products"
-        );
-        setData(response.data);
-      } catch (error) {
-        console.log("err -->", error.message);
-      }
-    })();
-  }, []);
+    dispatch(fetchProductData());
+  }, [dispatch]);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
+
+  if (isLoading) return <h1 className="text-center mt-10">Loading...</h1>;
+  if (error) return <h1 className="text-center mt-10 text-red-500">{error}</h1>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
@@ -33,7 +26,7 @@ const Product = () => {
           className="border rounded-lg overflow-hidden shadow-lg"
         >
           <img
-            src={product.images}
+            src={product.images?.[0] || "https://via.placeholder.com/300"}
             alt={product.title}
             className="w-full h-64 object-cover"
           />
@@ -45,20 +38,20 @@ const Product = () => {
                 ${product.price}
               </span>
               <span className="text-sm text-gray-500">
-                {product.category.name}
+                {product.category?.name}
               </span>
             </div>
-            <button
-              className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200 ease-in-out"
-              onClick={() => handleAddToCart(product)}
-            >
-              Add to Cart
-            </button>
-
-            <button className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-200 ease-in-out"
-      >
-              Like to Cart
-            </button>
+            <div className="mt-4 flex gap-2">
+              <button
+                className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to Cart
+              </button>
+              <button className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">
+                Like
+              </button>
+            </div>
           </div>
         </div>
       ))}
