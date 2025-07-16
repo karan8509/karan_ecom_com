@@ -13,6 +13,8 @@ This project demonstrates client-side routing, global state management using **Z
 - **Redux** – Scalable and predictable state container  
 - **Tailwind CSS** – Utility-first CSS framework for styling  
 - **DummyJSON API** – Free mock API for product data and testing
+- 
+- 📡 **Redux Toolkit + createAsyncThunk** is used for fetching product data from the API and handling loading and error states.
 
 ---
 
