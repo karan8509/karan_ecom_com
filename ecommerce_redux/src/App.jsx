@@ -4,9 +4,11 @@ import { Route, Routes } from "react-router-dom";
 import Like from "./pages/LikePages";
 import { Provider } from "react-redux";
 import Store from "./redux/store";
+import Navbar from "./component/navbar";
 const App = () => {
   return (
     <Provider store={Store}>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />

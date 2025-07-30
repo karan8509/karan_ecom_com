@@ -19,7 +19,13 @@ const userProductStore = createSlice({
   initialState, // ✅ Used properly
   reducers: {
     addToCart: (state, action) => {
-      state.AllProduct.push(action.payload); // Example logic
+      const item = action.payload;
+      const existItem = state.AllProduct.find(
+        (product) => product.id === item.id
+      );
+      if (!existItem) {
+        state.AllProduct.push({ ...item, quantity: 1 });
+      }
       localStorage.setItem("product", JSON.stringify(state.AllProduct));
     },
     removeCartProduct: (state, action) => {
@@ -28,23 +34,22 @@ const userProductStore = createSlice({
       );
       localStorage.setItem("product", JSON.stringify(state.AllProduct));
     },
-   
   },
-   extraReducers: (builder) => {
-      builder.addCase(fetchProductData.pending, (state, action) => {
-        state.isLoding = true;
-      });
+  extraReducers: (builder) => {
+    builder.addCase(fetchProductData.pending, (state, action) => {
+      state.isLoding = true;
+    });
 
-      builder.addCase(fetchProductData.fulfilled, (state, action) => {
-        state.isLoding = false;
-        state.data = action.payload;
-      });
+    builder.addCase(fetchProductData.fulfilled, (state, action) => {
+      state.isLoding = false;
+      state.data = action.payload;
+    });
 
-      builder.addCase(fetchProductData.rejected, (state, action) => {
-        console.log("error in reject ", action.state);
-        state.isError = true;
-      });
-    },
+    builder.addCase(fetchProductData.rejected, (state, action) => {
+      console.log("error in reject ", action.state);
+      state.isError = true;
+    });
+  },
 });
 
 export const { addToCart, removeCartProduct } = userProductStore.actions;

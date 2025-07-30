@@ -9,11 +9,11 @@ const Product = () => {
 
   useEffect(() => {
     dispatch(fetchProductData());
-  }, [dispatch]);
+  }, []);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-  };
+    };
 
   if (isLoading) return <h1 className="text-center mt-10">Loading...</h1>;
   if (error) return <h1 className="text-center mt-10 text-red-500">{error}</h1>;
@@ -26,7 +26,7 @@ const Product = () => {
           className="border rounded-lg overflow-hidden shadow-lg"
         >
           <img
-            src={product.images?.[0] || "https://via.placeholder.com/300"}
+            src={product.images?.[0]}
             alt={product.title}
             className="w-full h-64 object-cover"
           />
