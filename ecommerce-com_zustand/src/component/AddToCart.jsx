@@ -2,7 +2,7 @@ import React from "react";
 import userProductShow from "../store/userProduct";
 
 const AddToCart = () => {
-  const { allProducts  , removeCart} = userProductShow(); 
+  const { allProducts  , removeCart}  = userProductShow(); 
 
   console.log("userr -->", allProducts);
 

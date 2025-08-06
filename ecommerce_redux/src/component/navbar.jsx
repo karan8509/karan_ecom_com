@@ -15,8 +15,7 @@ const Navbar = () => {
         <Link
           to="/cart"
           className="flex items-center space-x-2 hover:text-gray-400 transition duration-200"
-          aria-label="Go to Cart"
-        >
+          aria-label="Go to Cart" >
           <ShoppingCart className="w-6 h-6" />
           <span className="text-sm font-semibold">{cart.length}</span>
         </Link>
